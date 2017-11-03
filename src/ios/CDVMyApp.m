@@ -5,20 +5,27 @@
 
 @implementation CDVMyApp
 
-- (void)compose:(CDVInvokedUrlCommand*)command
+- (void)call:(CDVInvokedUrlCommand*)command
 {
 	NSString *cmd = [command.arguments objectAtIndex:0];
     NSDictionary *opt = [command.arguments objectAtIndex:1];
-	
-	/*
-	if (cmd != nil && [videoFile length] == 0) {
-		NSString *errstr = @"找不到文件";
+    NSLog(@"%@ %@", cmd, opt);
+
+	if ([cmd isEqualToString:@"setTitle"]) {
+        self.viewController.title = [opt objectForKey:@"title"];
+    }
+    else if ([cmd isEqualToString:@"showNav"]) {
+        BOOL val = [opt objectForKey:@"show"];
+        [self.viewController.navigationController setNavigationBarHidden:val animated:YES];
+    }
+    else {
+        NSString *errstr = [NSString stringWithFormat:@"Unknown command: %@", cmd];
 		CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errstr];
 		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 		return;
 	}
 
-    
+/*
     [self.commandDelegate runInBackground:^{
 	
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:videoFile];

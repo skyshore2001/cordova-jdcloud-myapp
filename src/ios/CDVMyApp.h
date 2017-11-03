@@ -6,6 +6,6 @@
 
 + (NSString*)cordovaVersion;
 
-- (void)compose:(CDVInvokedUrlCommand*)command;
+- (void)call:(CDVInvokedUrlCommand*)command;
 
 @end
