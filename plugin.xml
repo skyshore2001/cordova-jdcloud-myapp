@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+plugin myapp.
+-->
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-myapp"
+    version="1.0.0">
+    <name>myapp</name>
+    <description>MyApp Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,myapp</keywords>
+    <repo>https://github.com/skyshore2001/cordova-plugin-myapp</repo>
+    <issue>https://github.com/skyshore2001/cordova-plugin-myapp/issues</issue>
+
+    <js-module src="www/myapp.js" name="myapp">
+        <clobbers target="myapp" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="myapp">
+                <param name="ios-package" value="CDVMyApp"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVMyApp.h" />
+        <source-file src="src/ios/CDVMyApp.m" />
+    </platform>
+</plugin>
