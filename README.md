@@ -14,18 +14,18 @@
 
 ### 导航栏接口
 
-	myapp.setTitle(title)
+显示或隐藏导航栏。
+
 	myapp.showNav(show)
+
+- show: true/false 
+
+设置标题：
+
+	myapp.setTitle(title)
 
 ### 菜单控制
 
-	myapp.setMenu({items: [{name, page, flags}]})
+	myapp.setMenu({items: [{name, page}]})
 
-### 子浏览器保存数据
-
-	myapp.setData(key, val, flag)
-	myapp.getData(key, flag)  TODO: 同步?
-
-flag
-: 'l'-localstorage, 's'-sessionstorage, 'v'-global variable
-
+设置菜单栏每项的名称及跳转页面。
