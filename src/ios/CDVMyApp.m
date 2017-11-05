@@ -15,8 +15,9 @@
         self.viewController.title = [opt objectForKey:@"title"];
     }
     else if ([cmd isEqualToString:@"showNav"]) {
-        BOOL val = [opt objectForKey:@"show"];
+        BOOL val = [[opt objectForKey:@"show"] boolValue];
         [self.viewController.navigationController setNavigationBarHidden:val animated:YES];
+		// TODO
     }
     else {
         NSString *errstr = [NSString stringWithFormat:@"Unknown command: %@", cmd];
