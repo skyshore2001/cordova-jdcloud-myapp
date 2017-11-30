@@ -7,6 +7,7 @@ import org.apache.cordova.CordovaInterface;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import android.content.pm.PackageManager;
 
 public class MyApp extends CordovaPlugin {
 	public static final String TAG = "MyApp";
@@ -15,18 +16,24 @@ public class MyApp extends CordovaPlugin {
 		super.initialize(cordova, webView);
 	}
 
-	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-		if ("getAppVersion".equals(action)) {
-			final String cmd = args.getString(0);
-			final JSONObject opt = args.getJSONObject(1);
-			final CallbackContext cb = callbackContext;
+	public boolean execute(String action, JSONArray args, CallbackContext cb) throws JSONException {
+		if (! "call".equals(action))
+			return false;
 
-			try {
+		try {
+			final String cmd = args.getString(0);
+			final JSONObject opt = args.optJSONObject(1);
+
+			if ("getAppVersion".equals(cmd)) {
 				JSONObject r = getAppVersion();
 				cb.success(r);
-			} catch (Exception e) {
-				cb.error(e.getMessage());
 			}
+			else {
+				throw new Exception("unknown call `" + cmd + "'");
+			}
+		} catch (Exception e) {
+			cb.error(e.getMessage());
+		}
 
 			/* 异步操作示例
 			cordova.getThreadPool().execute(new Runnable() {
@@ -41,10 +48,6 @@ public class MyApp extends CordovaPlugin {
 				}
 			});
 			*/
-		}
-		else {
-			return false;
-		}
 		return true;
 	}
 
