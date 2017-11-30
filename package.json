@@ -1,0 +1,29 @@
+{
+  "name": "cordova-plugin-myapp",
+  "version": "1.0.0",
+  "description": "add native interfaces for my app",
+  "cordova": {
+    "id": "cordova-plugin-myapp",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skyshore2001/cordova-plugin-myapp"
+  },
+  "keywords": [
+    "cordova",
+    "myapp",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "skyshore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skyshore2001/cordova-plugin-myapp/issues"
+  },
+  "homepage": "https://github.com/skyshore2001/cordova-plugin-myapp"
+}
