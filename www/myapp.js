@@ -16,14 +16,8 @@ var MyApp = {
 		//argscheck.checkArgs('SOFF', 'MyApp.call', arguments);
 		exec(onSuccess, onError, name, "call", [ cmd, opt ]);
 	},
-	setTitle: function(title) {
-		this.call('setTitle', {title: title});
-	},
-	showNav: function(show) {
-		this.call('showNav', {show: show});
-	},
-	setMenu: function (opt) {
-		this.call('setMenu', opt);
+	getAppVersion: function(onGetAppVersion) {
+		this.call('getAppVersion', null, onGetAppVersion, null);
 	}
 };
 

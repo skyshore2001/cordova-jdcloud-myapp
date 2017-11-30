@@ -8,32 +8,33 @@
 - (void)call:(CDVInvokedUrlCommand*)command
 {
 	NSString *cmd = [command.arguments objectAtIndex:0];
-    NSDictionary *opt = [command.arguments objectAtIndex:1];
-    NSLog(@"%@ %@", cmd, opt);
+	NSDictionary *opt = [command.arguments objectAtIndex:1];
+	NSLog(@"%@ %@", cmd, opt);
 
-	if ([cmd isEqualToString:@"setTitle"]) {
-        self.viewController.title = [opt objectForKey:@"title"];
-    }
-    else if ([cmd isEqualToString:@"showNav"]) {
-        BOOL val = [[opt objectForKey:@"show"] boolValue];
-        [self.viewController.navigationController setNavigationBarHidden:val animated:YES];
-		// TODO
-    }
-    else {
-        NSString *errstr = [NSString stringWithFormat:@"Unknown command: %@", cmd];
+	if ([cmd isEqualToString:@"getAppVersion"]) {
+		NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+		NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+		NSNumber *buildNumber = [infoDict objectForKey:@"CFBundleVersion"];
+
+		// Build a plugin response
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary: @{@"version": appVersion, @"build": buildNumber}];
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}
+	else {
+		NSString *errstr = [NSString stringWithFormat:@"Unknown command: %@", cmd];
 		CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:errstr];
 		[self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 		return;
 	}
 
 /*
-    [self.commandDelegate runInBackground:^{
+	[self.commandDelegate runInBackground:^{
 	
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:videoFile];
+		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:videoFile];
 
-        sleep(2);
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
+		sleep(2);
+		[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+	}];
 	*/
 }
 
