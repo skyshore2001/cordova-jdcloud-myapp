@@ -21,3 +21,9 @@
 
 - onGetVersion: function (ver={version, build})
 
+### 重新加载页面
+
+	myapp.reload(url?)
+
+- url: 加载指定页面。如果不指定，则加载config.xml中指定的默认页。
+
