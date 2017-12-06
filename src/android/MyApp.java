@@ -1,9 +1,12 @@
 package com.daca.myapp;
 
+import org.apache.cordova.Config;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebViewImpl;
+import org.apache.cordova.LOG;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,10 +31,17 @@ public class MyApp extends CordovaPlugin {
 				JSONObject r = getAppVersion();
 				cb.success(r);
 			}
+			else if ("reload".equals(cmd)) {
+				String url = opt.optString("url");
+				if (url == null || url.isEmpty())
+					url = Config.getStartUrl();
+				this.webView.loadUrl(url);
+			}
 			else {
 				throw new Exception("unknown call `" + cmd + "'");
 			}
 		} catch (Exception e) {
+			LOG.e(TAG, e.getMessage());
 			cb.error(e.getMessage());
 		}
 

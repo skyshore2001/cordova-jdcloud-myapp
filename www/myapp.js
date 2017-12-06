@@ -1,8 +1,9 @@
+cordova.define("cordova-plugin-myapp.myapp", function(require, exports, module) {
 var argscheck = require('cordova/argscheck'),
-    channel = require('cordova/channel'),
-    utils = require('cordova/utils'),
-    exec = require('cordova/exec'),
-    cordova = require('cordova');
+	channel = require('cordova/channel'),
+	utils = require('cordova/utils'),
+	exec = require('cordova/exec'),
+	cordova = require('cordova');
 
 function noop() {}
 
@@ -18,7 +19,12 @@ var MyApp = {
 	},
 	getAppVersion: function(onGetAppVersion) {
 		this.call('getAppVersion', null, onGetAppVersion, null);
+	},
+	reload: function(url) {
+		this.call('reload', {url: url});
 	}
 };
 
 module.exports = MyApp;
+
+});
