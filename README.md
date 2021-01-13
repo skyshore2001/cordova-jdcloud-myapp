@@ -1,4 +1,4 @@
-# cordova-plugin-myapp
+# cordova-jdcloud-myapp
 
 本插件提供自定义应用程序控制。
 

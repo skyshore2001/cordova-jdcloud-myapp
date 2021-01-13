@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-myapp",
+  "name": "cordova-jdcloud-myapp",
   "version": "1.0.0",
   "description": "add native interfaces for my app",
   "cordova": {
-    "id": "cordova-plugin-myapp",
+    "id": "cordova-jdcloud-myapp",
     "platforms": [
       "android",
       "ios"
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/skyshore2001/cordova-plugin-myapp"
+    "url": "https://github.com/skyshore2001/cordova-jdcloud-myapp"
   },
   "keywords": [
     "cordova",
@@ -23,7 +23,7 @@
   "author": "skyshore",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/skyshore2001/cordova-plugin-myapp/issues"
+    "url": "https://github.com/skyshore2001/cordova-jdcloud-myapp/issues"
   },
-  "homepage": "https://github.com/skyshore2001/cordova-plugin-myapp"
+  "homepage": "https://github.com/skyshore2001/cordova-jdcloud-myapp"
 }
