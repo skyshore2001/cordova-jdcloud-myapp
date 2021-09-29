@@ -12,8 +12,8 @@ plugin myapp.
     <description>MyApp Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,myapp</keywords>
-    <repo>https://github.com/skyshore2001/cordova-plugin-myapp</repo>
-    <issue>https://github.com/skyshore2001/cordova-plugin-myapp/issues</issue>
+    <repo>https://github.com/skyshore2001/cordova-jdcloud-myapp</repo>
+    <issue>https://github.com/skyshore2001/cordova-jdcloud-myapp/issues</issue>
 
     <js-module src="www/myapp.js" name="myapp">
         <clobbers target="myapp" />
